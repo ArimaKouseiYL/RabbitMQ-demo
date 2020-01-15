@@ -5,6 +5,14 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.QueueingConsumer;
 import com.zpc.rabbitmq.util.ConnectionUtil;
 
+/**
+ * 消费者从队列中获取消息，服务端如何知道消息已经被消费呢？
+ * <p>
+ * 模式1：自动确认
+ * 只要消息从队列中获取，无论消费者获取到消息后是否成功消息，都认为是消息已经成功消费。
+ * 模式2：手动确认
+ * 消费者从队列中获取消息后，服务器会将该消息标记为不可用状态，等待消费者的反馈，如果消费者一直没有反馈，那么该消息将一直处于不可用状态。
+ */
 public class Recv2 {
 
     private final static String QUEUE_NAME = "test_queue_work";
@@ -34,7 +42,7 @@ public class Recv2 {
             // 休眠1秒
             Thread.sleep(1000);
             //下面这行注释掉表示使用自动确认模式
-            channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
+            channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false); //反馈消息的消费状态
         }
     }
 }
