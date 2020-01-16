@@ -25,6 +25,7 @@ public class Recv {
         channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "delete");
         channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "update");
         // 同一时刻服务器只会发一条消息给消费者
+        // basicQos设置消费者客户端最大能“保持”的未确认的消息数
         channel.basicQos(1);
 
         // 定义队列的消费者

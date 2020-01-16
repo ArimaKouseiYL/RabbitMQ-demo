@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 生产者
+ */
 @Component
 public class HelloSender {
     @Autowired

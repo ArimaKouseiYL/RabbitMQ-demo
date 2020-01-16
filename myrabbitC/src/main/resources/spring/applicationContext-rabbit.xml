@@ -7,8 +7,8 @@
 
 	<!-- 定义RabbitMQ的连接工厂 -->
 	<rabbit:connection-factory id="connectionFactory"
-		host="127.0.0.1" port="5672" username="admin" password="admin"
-		virtual-host="testhost" />
+		host="192.168.20.131" port="5672" username="guest" password="guest"
+		virtual-host="testHost" />
 
 	<!-- MQ的管理，包括队列、交换器等 -->
 	<rabbit:admin connection-factory="connectionFactory" />
